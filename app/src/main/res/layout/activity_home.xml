@@ -1,53 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".HomeActivity">
+    android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    </android.support.design.widget.AppBarLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:fitsSystemWindows="true"
+                android:minHeight="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-    <!-- Note that these should (and will be) be imageButtons -->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/black"
-        android:contentDescription="@string/home_listings"
-        android:fontFamily="sans-serif-thin"
-        android:gravity="center"
-        android:onClick="onViewListingsClicked"
-        android:text="@string/home_listings"
-        android:textColor="@android:color/white"
-        android:textSize="48sp"/>
+            </android.support.v7.widget.Toolbar>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/black"
-        android:contentDescription="@string/home_register"
-        android:fontFamily="sans-serif-thin"
-        android:gravity="center"
-        android:onClick="onRegisterClicked"
-        android:text="@string/home_register"
-        android:textColor="@android:color/white"
-        android:textSize="48sp"/>
+        </android.support.design.widget.AppBarLayout>
 
-</LinearLayout>
+        <!-- Note that these should (and will be) be imageButtons -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:contentDescription="@string/home_listings"
+            android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:onClick="onViewListingsClicked"
+            android:text="@string/home_listings"
+            android:textColor="@android:color/white"
+            android:textSize="48sp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:contentDescription="@string/home_register"
+            android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:onClick="onRegisterClicked"
+            android:text="@string/home_register"
+            android:textColor="@android:color/white"
+            android:textSize="48sp"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:menu="@menu/menu_drawer"/>
+
+</android.support.v4.widget.DrawerLayout>
