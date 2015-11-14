@@ -9,7 +9,7 @@ import com.parse.ParseFacebookUtils;
 
 public class TravelCraftApp extends Application {
 
-    public static final String TAG = "MyApp";
+    public static final String TAG = TravelCraftApp.class.getSimpleName();
 
     @Override
     public void onCreate() {
@@ -23,7 +23,6 @@ public class TravelCraftApp extends Application {
         FacebookSdk.sdkInitialize(getApplicationContext());
         //Initialize Parse Facebook integration
         ParseFacebookUtils.initialize(getApplicationContext());
-
 
     }
 }

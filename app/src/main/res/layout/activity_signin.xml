@@ -5,7 +5,6 @@
               android:background="@color/colorTextPrimary"
               android:orientation="vertical">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,6 +15,12 @@
         android:textColor="@android:color/white"
         android:textSize="48sp"/>
 
+    <Button android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Debug"
+            android:onClick="onDebugClick"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,13 +28,13 @@
         android:layout_weight="1"
 
         android:background="@drawable/com_facebook_button_background"
-        android:drawableLeft="@drawable/com_facebook_button_icon"
+        android:drawableStart="@drawable/com_facebook_button_icon"
         android:drawablePadding="@dimen/com_facebook_share_button_compound_drawable_padding"
         android:onClick="onLoginClick"
 
         android:paddingBottom="@dimen/com_facebook_share_button_padding_bottom"
-        android:paddingLeft="@dimen/com_facebook_share_button_padding_left"
-        android:paddingRight="@dimen/com_facebook_share_button_padding_right"
+        android:paddingStart="@dimen/com_facebook_share_button_padding_left"
+        android:paddingEnd="@dimen/com_facebook_share_button_padding_right"
         android:paddingTop="@dimen/com_facebook_share_button_padding_top"
         android:text="@string/com_facebook_loginview_log_in_button"
         android:textColor="@color/com_facebook_share_button_text_color"

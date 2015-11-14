@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 
 import com.parse.LogInCallback;
@@ -19,6 +20,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SigninActivity extends AppCompatActivity {
+
+    public static final String TAG = SigninActivity.class.getSimpleName();
 
     private Dialog mProgressDialog;
 
@@ -34,6 +37,12 @@ public class SigninActivity extends AppCompatActivity {
             // Go to the user info activity
             loginDone();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -54,12 +63,12 @@ public class SigninActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException err) {
                 mProgressDialog.dismiss();
                 if (user == null) {
-                    Log.d(TravelCraftApp.TAG, "Uh oh. The user cancelled the Facebook login.");
+                    Log.d(TAG, "Uh oh. The user cancelled the Facebook login.");
                 } else if (user.isNew()) {
-                    Log.d(TravelCraftApp.TAG, "User signed up and logged in through Facebook!");
+                    Log.d(TAG, "User signed up and logged in through Facebook!");
                     loginDone();
                 } else {
-                    Log.d(TravelCraftApp.TAG, "User logged in through Facebook!");
+                    Log.d(TAG, "User logged in through Facebook!");
                     loginDone();
                 }
             }
@@ -69,5 +78,10 @@ public class SigninActivity extends AppCompatActivity {
     private void loginDone() {
         Intent intent = new Intent(this, DispatchActivity.class);
         startActivity(intent);
+    }
+
+    // For testing purposes
+    public void onDebugClick(View view) {
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

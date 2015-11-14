@@ -17,12 +17,14 @@ import org.json.JSONObject;
 
 public class DispatchActivity extends AppCompatActivity {
 
+    public static final String TAG = DispatchActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispatch);
 
-        Log.d(TravelCraftApp.TAG, "DispatchActivity onCreate");
+        Log.d(TAG, "DispatchActivity onCreate");
 
         // Check if there is current user info
         if (ParseUser.getCurrentUser() != null) {
@@ -57,24 +59,20 @@ public class DispatchActivity extends AppCompatActivity {
                                 currentUser.saveInBackground();
 
                             } catch (JSONException e) {
-                                Log.d(TravelCraftApp.TAG,
-                                        "Error parsing returned user data. " + e);
+                                Log.d(TAG, "Error parsing returned user data. " + e);
                             }
                         } else if (graphResponse.getError() != null) {
                             switch (graphResponse.getError().getCategory()) {
                                 case LOGIN_RECOVERABLE:
-                                    Log.d(TravelCraftApp.TAG,
-                                            "Authentication error: " + graphResponse.getError());
+                                    Log.d(TAG, "Authentication error: " + graphResponse.getError());
                                     break;
 
                                 case TRANSIENT:
-                                    Log.d(TravelCraftApp.TAG,
-                                            "Transient error. Try again. " + graphResponse.getError());
+                                    Log.d(TAG, "Transient error. Try again. " + graphResponse.getError());
                                     break;
 
                                 case OTHER:
-                                    Log.d(TravelCraftApp.TAG,
-                                            "Some other error: " + graphResponse.getError());
+                                    Log.d(TAG, "Some other error: " + graphResponse.getError());
                                     break;
                             }
                         }
