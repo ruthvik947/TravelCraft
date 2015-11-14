@@ -31,32 +31,39 @@
         </android.support.design.widget.AppBarLayout>
 
         <!-- Note that these should (and will be) be imageButtons -->
-        <Button
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/black"
-            android:contentDescription="@string/home_listings"
-            android:fontFamily="sans-serif-thin"
-            android:gravity="center"
-            android:onClick="onViewListingsClicked"
-            android:text="@string/home_listings"
-            android:textColor="@android:color/white"
-            android:textSize="48sp"/>
+            android:background="@drawable/buy">
 
-        <Button
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/home_listings"
+                android:gravity="center"
+                android:onClick="onViewListingsClicked"
+                android:text="@string/home_listings"
+                android:textColor="@android:color/white"
+                android:textSize="48sp"/>
+        </FrameLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/black"
-            android:contentDescription="@string/home_register"
-            android:fontFamily="sans-serif-thin"
-            android:gravity="center"
-            android:onClick="onRegisterClicked"
-            android:text="@string/home_register"
-            android:textColor="@android:color/white"
-            android:textSize="48sp"/>
+            android:background="@drawable/fly">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/home_register"
+                android:gravity="center"
+                android:onClick="onRegisterClicked"
+                android:text="@string/home_register"
+                android:textColor="@android:color/white"
+                android:textSize="48sp"/>
+        </FrameLayout>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
