@@ -2,4 +2,7 @@
     <string name="app_name">TravelCraft</string>
     <string name="action_settings">Settings</string>
     <string name="facebook_app_id">488640064646399</string>
+
+    <string name="twitter_consumer_key">vYwu1T9oQQ1u83l5nsgUmYLBq</string>
+    <string name="twitter_consumer_secret">ftmf1Pf6bpy8F3FaG8v7fsPbc9uo4w5QhT2Ubtr77qXvMEy8sv</string>
 </resources>
