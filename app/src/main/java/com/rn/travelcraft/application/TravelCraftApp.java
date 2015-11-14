@@ -10,7 +10,7 @@ import com.parse.ParseTwitterUtils;
 
 public class TravelCraftApp extends Application {
 
-    public static final String TAG = "MyApp";
+    public static final String TAG = TravelCraftApp.class.getSimpleName();
 
     @Override
     public void onCreate() {

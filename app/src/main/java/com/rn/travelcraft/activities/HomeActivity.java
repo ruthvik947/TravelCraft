@@ -17,21 +17,14 @@ import com.rn.travelcraft.application.TravelCraftApp;
 
 public class HomeActivity extends AppCompatActivity {
 
+    public static final String TAG = HomeActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -62,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        Log.d(TravelCraftApp.TAG, "User logged out!");
+        Log.d(TAG, "User logged out!");
         // Log the user out
         ParseUser.logOut();
         // Go to the login view
@@ -74,5 +67,13 @@ public class HomeActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public void onViewListingsClicked(View view) {
+        startActivity(new Intent(this, ListingsActivity.class));
+    }
+
+    public void onRegisterClicked(View view) {
+        startActivity(new Intent(this, RegisterAsCourierActivity.class));
     }
 }
