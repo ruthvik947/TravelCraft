@@ -10,7 +10,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.parse.ParseUser;
 import com.rn.travelcraft.R;
-import com.rn.travelcraft.application.TravelCraftApp;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,9 +33,11 @@ public class DispatchActivity extends AppCompatActivity {
                 storeData();
             }
             startActivity(new Intent(this, HomeActivity.class));
+            finish();
         } else {
             // Start and intent for the logged out activity
             startActivity(new Intent(this, SigninActivity.class));
+            finish();
         }
     }
 

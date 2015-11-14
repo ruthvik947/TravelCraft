@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
 
-    <!--<android.support.design.widget.AppBarLayout
-        android:layout_height="wrap_content"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -21,19 +21,19 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-    </android.support.design.widget.AppBarLayout>-->
+    </android.support.design.widget.AppBarLayout>
 
     <!-- Note that these should (and will be) be imageButtons -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@android:color/black"
         android:contentDescription="@string/home_listings"
-        android:onClick="onViewListingsClicked"
         android:fontFamily="sans-serif-thin"
         android:gravity="center"
+        android:onClick="onViewListingsClicked"
         android:text="@string/home_listings"
-        android:background="@android:color/black"
         android:textColor="@android:color/white"
         android:textSize="48sp"/>
 
@@ -41,12 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@android:color/black"
         android:contentDescription="@string/home_register"
-        android:onClick="onRegisterClicked"
         android:fontFamily="sans-serif-thin"
         android:gravity="center"
+        android:onClick="onRegisterClicked"
         android:text="@string/home_register"
-        android:background="@android:color/black"
         android:textColor="@android:color/white"
         android:textSize="48sp"/>
 

@@ -16,35 +16,39 @@
         android:textColor="@color/colorTextWhite"
         android:textSize="48sp"/>
 
-    <Button android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Debug"
-            android:onClick="onDebugClick"/>
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorTextWhite"
+        android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin">
 
         <Button
             android:id="@+id/fb_button"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+
             android:background="@drawable/com_facebook_button_background"
-            android:drawableStart="@drawable/com_facebook_button_icon"
-            android:drawablePadding="@dimen/com_facebook_share_button_compound_drawable_padding"
-            android:onClick="onLoginClick"
+            android:drawableLeft="@drawable/com_facebook_button_icon"
+            android:onClick="onFbLoginClick"
 
-            android:paddingBottom="@dimen/com_facebook_share_button_padding_bottom"
-            android:paddingStart="@dimen/com_facebook_share_button_padding_left"
-            android:paddingEnd="@dimen/com_facebook_share_button_padding_right"
-            android:paddingTop="@dimen/com_facebook_share_button_padding_top"
-            android:text="@string/com_facebook_loginview_log_in_button"
-            android:textColor="@color/com_facebook_share_button_text_color"
-            android:textSize="@dimen/com_facebook_share_button_text_size"
-            android:textStyle="bold"/>
+            android:paddingLeft="@dimen/com_facebook_share_button_padding_left"
+            android:paddingRight="@dimen/com_facebook_share_button_padding_right"
+            android:text="Log in via Facebook"
+            android:textAllCaps="false"
 
-    </FrameLayout>
+            android:textColor="@color/colorTextWhite"
+            android:textSize="14sp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:onClick="onDebugClick"
+            android:text="Debug"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextWhite"/>
+
+    </LinearLayout>
 </LinearLayout>

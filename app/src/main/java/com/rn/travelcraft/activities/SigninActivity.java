@@ -30,6 +30,7 @@ public class SigninActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
+        Log.d(TravelCraftApp.TAG, "SigninActivity onCreate()");
         // Check if there is a currently logged in user
         // and it's linked to a Facebook account.
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -78,10 +79,18 @@ public class SigninActivity extends AppCompatActivity {
     private void loginDone() {
         Intent intent = new Intent(this, DispatchActivity.class);
         startActivity(intent);
+        finish();
     }
 
     // For testing purposes
     public void onDebugClick(View view) {
         startActivity(new Intent(this, HomeActivity.class));
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TravelCraftApp.TAG, "SigninActivity onDestroy()");
     }
 }
