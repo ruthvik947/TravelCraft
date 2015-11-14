@@ -1,4 +1,4 @@
-package com.rn.travelcraft;
+package com.rn.travelcraft.application;
 
 import android.app.Application;
 
@@ -17,7 +17,7 @@ public class TravelCraftApp extends Application {
         Parse.initialize(this, "Qt1kfx56DpzLgywLINf43f0nZAycmqVdSnOUBRfl", "pW9Z1oiQ7lBRYFweKfOECRtJJQmw3KcAMeUkJqVK");
 
         ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
+        testObject.put("cmon", "yay");
         testObject.saveInBackground();
     }
 }
