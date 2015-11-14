@@ -51,7 +51,7 @@ public class SigninActivity extends AppCompatActivity {
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void onLoginClick(View v) {
+    public void onFbLoginClick(View v) {
         mProgressDialog = ProgressDialog.show(SigninActivity.this, "", "Logging in...", true);
 
         List<String> permissions = Arrays.asList("public_profile", "email");

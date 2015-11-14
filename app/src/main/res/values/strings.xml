@@ -6,7 +6,6 @@
     <string name="home_register">Register as Courier</string>
     <string name="home_listings">Browse listings</string>
     <string name="title_activity_register_as_courier">RegisterAsCourierActivity</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="twitter_consumer_key">vYwu1T9oQQ1u83l5nsgUmYLBq</string>
+    <string name="twitter_consumer_secret">ftmf1Pf6bpy8F3FaG8v7fsPbc9uo4w5QhT2Ubtr77qXvMEy8sv</string>
 </resources>
