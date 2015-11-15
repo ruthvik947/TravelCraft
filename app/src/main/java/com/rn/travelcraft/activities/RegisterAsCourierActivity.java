@@ -3,12 +3,14 @@ package com.rn.travelcraft.activities;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
@@ -40,15 +42,14 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             "0.5", "1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0", "5.0", "7.5", "10.0"
     };
 
-//    private TextView fromCity;
-//    private TextView toCity;
-//    private TextView spaceText;
     private TextView mDepartureDateText;
     private TextView mArrivalDateText;
 
     private MaterialBetterSpinner fromSpinner;
     private MaterialBetterSpinner toSpinner;
     private MaterialBetterSpinner spaceSpinner;
+
+    private ScrollView mParentView;
 
     private Trip mTrip;
 
@@ -58,6 +59,7 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_as_courier);
+        mParentView = (ScrollView) findViewById(R.id.parent_view);
 
         initializeViews();
         addListeners();
@@ -65,10 +67,6 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     }
 
     private void initializeViews() {
-//        fromCity = (TextView) findViewById(R.id.from_city_text);
-//        toCity = (TextView) findViewById(R.id.to_city_text);
-//        spaceText = (TextView) findViewById(R.id.free_space_text);
-
         mTrip = new Trip();
         mTrip.setTraveller(ParseUser.getCurrentUser());
 
@@ -142,17 +140,26 @@ public class RegisterAsCourierActivity extends AppCompatActivity
 
     public void onNextClicked(View view) {
 
-        mTrip.parseUpload();
+        if (mTrip.isDataComplete()) {
+            mTrip.parseUpload();
 
-        Intent intent = new Intent(this, ConfirmTravelActivity.class);
-        startActivity(intent,
-                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            Intent intent = new Intent(this, ConfirmTravelActivity.class);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        } else {
+            Snackbar.make(mParentView, "Please complete all the fields", Snackbar.LENGTH_LONG)
+                    .show();
+        }
     }
 
     @Override
     public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
 
         if (mIsDepartureDateSet) {
+            findViewById(R.id.departureView1).setVisibility(View.VISIBLE);
+            View departureView2 = findViewById(R.id.departureView2);
+            departureView2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
             mIsDepartureDateSet = false;
             String text = monthOfYear + "/" + dayOfMonth + "/" + year;
             mDepartureDateText.setText(text);
@@ -161,16 +168,20 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             date.setMonth(monthOfYear);
             date.setYear(year - 1900);
             mTrip.setDepartureDate(date);
-            //Log.d(TravelCraftApp.TAG, "Dep: "+mTrip.getDepartureDate() + "year: " + year + "date year: "+date.getYear());
         } else {
+
+            findViewById(R.id.arrivalView1).setVisibility(View.VISIBLE);
+            View arrivalView2 = findViewById(R.id.arrivalView2);
+            arrivalView2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
             String text = monthOfYear + "/" + dayOfMonth + "/" + year;
             mArrivalDateText.setText(text);
+
             Date date = new Date();
             date.setDate(dayOfMonth);
             date.setMonth(monthOfYear);
             date.setYear(year - 1900);
             mTrip.setArrivalDate(date);
-            //Log.d(TravelCraftApp.TAG, "Arr: " + mTrip.getArrivalDate());
         }
     }
 }
