@@ -31,7 +31,7 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     private static final int CONFIRM_REQUEST = 102;
 
     private final String[] fromCities = new String[] {
-        "Kampala", "Guatemala", "Baku", "Bangalore", "Nairobi", "Jharkhand"
+        "Entebbe", "Guatemala", "Nairobi"
     };
 
     private final String[] toCities = new String[] {
