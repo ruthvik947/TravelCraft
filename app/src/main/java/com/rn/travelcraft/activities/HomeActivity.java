@@ -1,7 +1,11 @@
 package com.rn.travelcraft.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,11 +16,15 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
 import com.rn.travelcraft.R;
 import com.rn.travelcraft.application.TravelCraftApp;
+
+import butterknife.Bind;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -30,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Log.d(TravelCraftApp.TAG, "HomeActivity onCreate()");
+        Log.d(TAG, "HomeActivity onCreate()");
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
@@ -53,12 +61,13 @@ public class HomeActivity extends AppCompatActivity {
             userName.setText(currentUser.getString("name"));
             userEmail.setText(currentUser.getEmail());
         }
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TravelCraftApp.TAG, "HomeActivity onDestroy()");
+        Log.d(TAG, "HomeActivity onDestroy()");
     }
 
     @Override
@@ -128,6 +137,7 @@ public class HomeActivity extends AppCompatActivity {
         mDrawer.closeDrawers();
     }
 
+
     private void logout() {
         Log.d(TAG, "User logged out!");
         // Log the user out
@@ -144,10 +154,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onViewListingsClicked(View view) {
-        startActivity(new Intent(this, ListingsActivity.class));
+        Intent intent = new Intent(this, ListingsActivity.class);
+        startActivity(intent,
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     public void onRegisterClicked(View view) {
-        startActivity(new Intent(this, RegisterAsCourierActivity.class));
+        Intent intent = new Intent(this, RegisterAsCourierActivity.class);
+        startActivity(intent,
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 }

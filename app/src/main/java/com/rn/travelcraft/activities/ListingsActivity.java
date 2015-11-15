@@ -39,10 +39,10 @@ public class ListingsActivity extends AppCompatActivity {
 
         mUtils = new Utils(ListingsActivity.this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Browse");
+        getSupportActionBar().setTitle("Browse");*/
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.listings_swipe_refresh_layout);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);

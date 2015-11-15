@@ -38,5 +38,6 @@ dependencies {
     //Facebook login
     compile 'com.facebook.android:facebook-android-sdk:4.6.0'
     compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
+    compile 'com.jakewharton:butterknife:7.0.1'
 
 }

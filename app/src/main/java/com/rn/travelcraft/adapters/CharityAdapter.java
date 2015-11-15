@@ -38,7 +38,7 @@ public class CharityAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.listitem_charity, parent, false);
+        View contactView = inflater.inflate(R.layout.list_item_charity, parent, false);
 
         // Return a new holder instance
         return new ViewHolder(contactView);

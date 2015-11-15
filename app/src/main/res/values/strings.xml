@@ -5,11 +5,21 @@
     <string name="title_activity_listings">ListingsActivity</string>
     <!--<string name="home_register">Register as Courier</string>
     <string name="home_listings">Browse list</string>-->
-    <string name="home_register">Fly</string>
+    <string name="home_register">Carry</string>
     <string name="home_listings">Buy</string>
     <string name="title_activity_register_as_courier">RegisterAsCourierActivity</string>
 
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="register_from_string">Where are you flying from?</string>
+    <string name="register_to">And where are you flying to?</string>
+    <string name="register_space">How much free baggage space do you have (in lbs)?</string>
+    <string name="title_activity_flight_details">FlightDetailsActivity</string>
+    <string name="register_dates">Tell us your departure and arrival dates</string>
+    <string name="traveler_confirm_string">You are nearly done! One last thing:
+        forward any form of travel confirmation details to travel@travelcraft.com.
+        We will take care of everything after that.</string>
+    <string name="traveler_thanks_string">Congratulations on doing a good thing! You will hear from
+        us very soon</string>
 </resources>

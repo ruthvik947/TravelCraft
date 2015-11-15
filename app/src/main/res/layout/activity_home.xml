@@ -30,40 +30,58 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <!-- Note that these should (and will be) be imageButtons -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/buy">
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/home_listings"
+                android:src="@drawable/buy"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:onClick="onViewListingsClicked"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/home_listings"
                 android:gravity="center"
                 android:onClick="onViewListingsClicked"
                 android:text="@string/home_listings"
                 android:textColor="@android:color/white"
+                android:textAllCaps="true"
                 android:textSize="48sp"/>
+
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/fly">
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/home_register"
+                android:src="@drawable/fly"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:onClick="onRegisterClicked"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/home_register"
                 android:gravity="center"
                 android:onClick="onRegisterClicked"
                 android:text="@string/home_register"
                 android:textColor="@android:color/white"
+                android:textAllCaps="true"
                 android:textSize="48sp"/>
+
         </FrameLayout>
+
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
