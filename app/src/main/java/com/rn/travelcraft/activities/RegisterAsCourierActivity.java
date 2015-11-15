@@ -26,6 +26,8 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     private static final String TAG = RegisterAsCourierActivity.class.getSimpleName();
     private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
+    private static final int CONFIRM_REQUEST = 102;
+
     private final String[] fromCities = new String[] {
         "Kampala", "Guatemala", "Baku", "Bangalore", "Nairobi", "Jharkhand"
     };
@@ -152,7 +154,8 @@ public class RegisterAsCourierActivity extends AppCompatActivity
 
         if (mIsDepartureDateSet) {
             mIsDepartureDateSet = false;
-            mDepartureDateText.setText(monthOfYear + "/" + dayOfMonth + "/" + year);
+            String text = monthOfYear + "/" + dayOfMonth + "/" + year;
+            mDepartureDateText.setText(text);
             Date date = new Date();
             date.setDate(dayOfMonth);
             date.setMonth(monthOfYear);
@@ -160,7 +163,8 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             mTrip.setDepartureDate(date);
             //Log.d(TravelCraftApp.TAG, "Dep: "+mTrip.getDepartureDate() + "year: " + year + "date year: "+date.getYear());
         } else {
-            mArrivalDateText.setText(monthOfYear + "/" + dayOfMonth + "/" + year);
+            String text = monthOfYear + "/" + dayOfMonth + "/" + year;
+            mArrivalDateText.setText(text);
             Date date = new Date();
             date.setDate(dayOfMonth);
             date.setMonth(monthOfYear);

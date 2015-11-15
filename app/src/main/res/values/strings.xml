@@ -29,4 +29,5 @@
     <string name="product_list_image">Product image</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="done_button">Done</string>
+    <string name="title_activity_checkout">CheckoutActivity</string>
 </resources>

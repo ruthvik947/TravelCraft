@@ -58,6 +58,11 @@
         </activity>
         <activity android:name=".activities.ProductListActivity" >
         </activity>
+        <activity
+            android:name=".activities.CheckoutActivity"
+            android:label="@string/title_activity_checkout"
+            android:theme="@style/AppTheme" >
+        </activity>
     </application>
 
 </manifest>

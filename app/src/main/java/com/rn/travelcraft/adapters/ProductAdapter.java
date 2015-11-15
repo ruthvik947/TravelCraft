@@ -1,21 +1,29 @@
 package com.rn.travelcraft.adapters;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 import com.rn.travelcraft.R;
 import com.rn.travelcraft.parseData.Product;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -41,8 +49,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ProductAdapter.ViewHolder holder, int position) {
-        Product currentProduct = mProductData.get(position);
+    public void onBindViewHolder(final ProductAdapter.ViewHolder holder, int position) {
+        final Product currentProduct = mProductData.get(position);
 
         holder.name.setText(currentProduct.getName());
 
@@ -63,13 +71,38 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 }
             });
         }
+
+        holder.addToCart.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser user = ParseUser.getCurrentUser();
+
+                if (user.getJSONArray("cart") == null) {
+                    JSONArray cartArray = new JSONArray();
+                    cartArray.put(currentProduct.getParseId());
+                    user.put("cart", cartArray);
+                } else {
+                    JSONArray cart = user.getJSONArray("cart");
+                    cart.put(currentProduct.getParseId());
+                }
+
+                try {
+                    user.save();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(mContext,
+                        "Product added to cart. Checkout in the homepage sidebar!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mProductData.size();
     }
-
 
     // ??
     public static class ViewHolder extends RecyclerView.ViewHolder implements

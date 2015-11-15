@@ -8,6 +8,7 @@ public class Product {
     private double mCost;
     private double mWeight;
     private ParseFile mImage;
+    private String parseId;
 
     public Product(String name, double cost, double weight, ParseFile image) {
         mName = name;
@@ -15,6 +16,10 @@ public class Product {
         mWeight = weight;
         mImage = image;
     }
+
+    public String getParseId() { return parseId; }
+
+    public void setParseId(String id) { parseId = id; }
 
     public String getName() {
         return mName;

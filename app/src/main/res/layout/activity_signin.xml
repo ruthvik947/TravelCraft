@@ -2,19 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/colorPrimary"
+              android:background="@android:color/black"
               android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/app_title"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:fontFamily="sans-serif-thin"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/colorTextWhite"
-        android:textSize="48sp"/>
+
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="0dp"
+                 android:layout_weight="3">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-64dp"
+            android:src="@drawable/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-thin"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="48sp"/>
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,15 +55,15 @@
             android:textColor="@color/colorTextWhite"
             android:textSize="14sp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorAccent"
-            android:onClick="onDebugClick"
-            android:text="Debug"
-            android:textAllCaps="false"
-            android:textColor="@color/colorTextWhite"/>
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/colorAccent"-->
+            <!--android:onClick="onDebugClick"-->
+            <!--android:text="Debug"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/colorTextWhite"/>-->
 
     </LinearLayout>
 </LinearLayout>
