@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.rn.travelcraft.activities.ProductListingActivity">
+    tools:context="com.rn.travelcraft.activities.ProductListActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

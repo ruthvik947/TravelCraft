@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CardView
+<android.support.v7.widget.CardView
     android:id="@+id/product_card"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -8,6 +8,59 @@
     android:layout_margin="@dimen/card_margin"
     android:elevation="@dimen/card_elevation">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp">
 
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:contentDescription="@string/product_list_image"/>
 
-</CardView>
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_toEndOf="@id/product_image"
+            android:textIsSelectable="true"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_toEndOf="@id/product_image"
+            android:layout_below="@id/product_name"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/product_weight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textIsSelectable="true"
+                android:layout_weight="2"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/product_cost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textIsSelectable="true"
+                android:layout_weight="2"
+                android:textAlignment="center"/>
+
+            <ImageButton
+                android:id="@+id/add_to_cart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/add_to_cart"
+                android:layout_weight="1"
+                android:src="@drawable/ic_add_shopping_cart_black_24dp"
+                android:background="@null"/>
+
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

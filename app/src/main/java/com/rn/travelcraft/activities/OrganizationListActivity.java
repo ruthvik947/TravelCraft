@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -15,6 +14,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.rn.travelcraft.R;
 import com.rn.travelcraft.adapters.CharityAdapter;
+import com.rn.travelcraft.adapters.CharityAdapter.RecyclerViewClickListener;
 import com.rn.travelcraft.application.TravelCraftApp;
 import com.rn.travelcraft.parseData.Charity;
 import com.rn.travelcraft.utilities.Utils;
@@ -22,7 +22,9 @@ import com.rn.travelcraft.utilities.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListingsActivity extends AppCompatActivity {
+public class OrganizationListActivity extends AppCompatActivity implements RecyclerViewClickListener {
+
+    private static final String TAG = OrganizationListActivity.class.getSimpleName();
 
     final List<Charity> mCharityData = new ArrayList<>();
     private RecyclerView mRecyclerView;
@@ -34,10 +36,10 @@ public class ListingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listings);
-        Log.d(TravelCraftApp.TAG, "ListingsActivity onCreate()");
+        setContentView(R.layout.activity_organization_list);
+        Log.d(TravelCraftApp.TAG, "OrganizationListActivity onCreate()");
 
-        mUtils = new Utils(ListingsActivity.this);
+        mUtils = new Utils(OrganizationListActivity.this);
 
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,8 +88,9 @@ public class ListingsActivity extends AppCompatActivity {
                     Log.d(TravelCraftApp.TAG, "CharityQuery error: " + e);
                 }
                 mRecyclerView = (RecyclerView) findViewById(R.id.rv_charity);
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(ListingsActivity.this));
-                mCharityAdapter = new CharityAdapter(ListingsActivity.this, mCharityData);
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(OrganizationListActivity.this));
+                mCharityAdapter = new CharityAdapter(OrganizationListActivity.this,
+                                                    mCharityData, OrganizationListActivity.this);
                 mRecyclerView.setAdapter(mCharityAdapter);
 
                 if (!mSwipeRefreshLayout.isRefreshing()) {
@@ -102,6 +105,12 @@ public class ListingsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TravelCraftApp.TAG, "ListingsActivity onDestroy()");
+        Log.d(TravelCraftApp.TAG, "OrganizationListActivity onDestroy()");
+    }
+
+    // TODO: read log statement
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        Log.d(TAG, "How do I get the item at this position in the RecyclerView");
     }
 }
