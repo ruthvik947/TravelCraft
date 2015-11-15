@@ -3,9 +3,8 @@ package com.rn.travelcraft.activities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +21,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.rn.travelcraft.R;
 import com.rn.travelcraft.adapters.ProductAdapter;
-import com.rn.travelcraft.application.TravelCraftApp;
 import com.rn.travelcraft.parseData.Product;
 import com.rn.travelcraft.utilities.Utils;
 
@@ -40,18 +38,26 @@ public class ProductListActivity extends AppCompatActivity {
     private CardView headerImage;
     private TextView headerText;
     private ImageView headerLogo;
+    private View mProgressView;
 
     private String currentOrgName;
     private ParseObject currentOrg;
     private String currentOrgId;
+
+    private Utils mUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
+        mUtils = new Utils(ProductListActivity.this);
+
         currentOrgName = getIntent().getExtras().getString(OrganizationListActivity.SELECTED_CHARITY);
         currentOrgId = getIntent().getExtras().getString(OrganizationListActivity.SELECTED_CHARITY_ID);
+
+        mProgressView = findViewById(R.id.progress);
+        mUtils.showProgress(mProgressView, true);
 
         initializeViews();
         populateList();
@@ -124,6 +130,8 @@ public class ProductListActivity extends AppCompatActivity {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
+
+                    mUtils.showProgress(mProgressView, false);
 
                     Log.d(TAG, "" + objects.size() + " ID: " + currentOrgId);
 
