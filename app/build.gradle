@@ -40,4 +40,7 @@ dependencies {
     compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
     compile 'com.jakewharton:butterknife:7.0.1'
 
+    //Material Date+Time picker
+    compile 'com.code-troopers.betterpickers:library:2.2.1'
+
 }
