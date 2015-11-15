@@ -24,6 +24,8 @@
             android:layout_height="56dp"
             android:layout_toEndOf="@id/product_image"
             android:textIsSelectable="true"
+            android:layout_marginStart="24dp"
+            android:textSize="24sp"
             android:padding="8dp"
             android:layout_marginTop="8dp"/>
 

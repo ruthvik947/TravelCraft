@@ -16,15 +16,17 @@
     <string name="register_to">And where are you flying to?</string>
     <string name="register_space">How much free baggage space do you have (in lbs)?</string>
     <string name="title_activity_flight_details">FlightDetailsActivity</string>
+    <string name="register_dates">Tell us your departure and arrival dates</string>
     <string name="register_departureDate">When will you be leaving?</string>
     <string name="register_departureTime">Departure Time?</string>
     <string name="register_arrivalDate">When will you be arriving?</string>
     <string name="register_arrivalTime">Arrival Time?</string>
     <string name="traveler_confirm_string">You are nearly done! One last thing:
         forward any form of travel confirmation details to travel@travelcraft.com.
-        We will take care of everything after that.</string>
-    <string name="traveler_thanks_string">Congratulations on doing a good thing! You will hear from
+        We’ll take care of everything after that.</string>
+    <string name="traveler_thanks_string">Congratulations on doing a good thing! You’ll hear from
         us very soon</string>
     <string name="product_list_image">Product image</string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="done_button">Done</string>
 </resources>

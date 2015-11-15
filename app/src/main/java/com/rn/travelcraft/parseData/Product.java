@@ -9,8 +9,11 @@ public class Product {
     private double mWeight;
     private ParseFile mImage;
 
-    public Product() {
-
+    public Product(String name, double cost, double weight, ParseFile image) {
+        mName = name;
+        mCost = cost;
+        mWeight = weight;
+        mImage = image;
     }
 
     public String getName() {

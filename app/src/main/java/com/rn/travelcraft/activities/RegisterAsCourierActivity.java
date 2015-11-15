@@ -38,9 +38,9 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             "0.5", "1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0", "5.0", "7.5", "10.0"
     };
 
-    private TextView fromCity;
-    private TextView toCity;
-    private TextView spaceText;
+//    private TextView fromCity;
+//    private TextView toCity;
+//    private TextView spaceText;
     private TextView mDepartureDateText;
     private TextView mArrivalDateText;
 
@@ -63,12 +63,12 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     }
 
     private void initializeViews() {
+//        fromCity = (TextView) findViewById(R.id.from_city_text);
+//        toCity = (TextView) findViewById(R.id.to_city_text);
+//        spaceText = (TextView) findViewById(R.id.free_space_text);
+
         mTrip = new Trip();
         mTrip.setTraveller(ParseUser.getCurrentUser());
-
-        fromCity = (TextView) findViewById(R.id.from_city_text);
-        toCity = (TextView) findViewById(R.id.to_city_text);
-        spaceText = (TextView) findViewById(R.id.free_space_text);
 
         ArrayAdapter<String> fromCitiesAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, fromCities);
@@ -102,7 +102,6 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String city = (String) parent.getAdapter().getItem(position);
                 mTrip.setFromCity(city);
-                fromCity.setText(city);
                 toSpinner.requestFocus();
             }
         });
@@ -112,7 +111,6 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String city = (String) parent.getAdapter().getItem(position);
                 mTrip.setToCity(city);
-                toCity.setText(city);
                 spaceSpinner.requestFocus();
             }
         });
@@ -122,7 +120,7 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String space = (String) parent.getAdapter().getItem(position);
                 mTrip.setFreeBaggageSpace(space);
-                spaceText.setText(space);
+
             }
         });
     }
@@ -141,11 +139,9 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     }
 
     public void onNextClicked(View view) {
-        // Get all information and store as new ParseObject
-//        Slide slide = new Slide();
-//        slide.setDuration(1000);
-//        getWindow().setExitTransition(slide);
+
         mTrip.parseUpload();
+
         Intent intent = new Intent(this, ConfirmTravelActivity.class);
         startActivity(intent,
                 ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
