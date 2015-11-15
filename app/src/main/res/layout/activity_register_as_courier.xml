@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+    android:id="@+id/parent_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:padding="@dimen/activity_horizontal_margin"
     android:fitsSystemWindows="true"
+    android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.rn.travelcraft.activities.RegisterAsCourierActivity">
 
     <LinearLayout android:layout_width="match_parent"
@@ -38,8 +39,8 @@
             android:id="@+id/from_cities_spinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -67,8 +68,8 @@
             android:id="@+id/to_cities_spinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -96,8 +97,8 @@
             android:id="@+id/space_spinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -125,10 +126,19 @@
                 android:textColor="@android:color/black"/>
 
             <View
+                android:id="@+id/departureView1"
                 android:layout_width="200dp"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/departureView2"
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/colorDivider"/>
         </LinearLayout>
 
         <TextView
@@ -157,10 +167,19 @@
                 android:textColor="@android:color/black"/>
 
             <View
+                android:id="@+id/arrivalView1"
                 android:layout_width="200dp"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/arrivalView2"
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/colorDivider"/>
         </LinearLayout>
 
         <Button
@@ -169,11 +188,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
+            android:background="@color/colorPrimary"
             android:fontFamily="sans-serif-bold"
+            android:onClick="onNextClicked"
             android:text="@string/done_button"
-            android:textColor="@android:color/white"
-            android:background="@color/colorAccent"
-            android:onClick="onNextClicked"/>
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 

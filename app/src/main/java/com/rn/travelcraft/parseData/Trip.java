@@ -3,7 +3,6 @@ package com.rn.travelcraft.parseData;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-import java.lang.reflect.Field;
 import java.util.Date;
 
 public class Trip {
@@ -16,6 +15,8 @@ public class Trip {
     private Date mArrivalDate;
     private Date mDepartureDate;
 
+    private int mFieldSetCount;
+
     public Trip() {
         mTraveller = null;
         mFromCity = null;
@@ -24,6 +25,8 @@ public class Trip {
         mValidated = false;
         mArrivalDate = null;
         mDepartureDate = null;
+
+        mFieldSetCount = 0;
     }
 
     public ParseUser getTraveller() {
@@ -40,6 +43,7 @@ public class Trip {
 
     public void setFromCity(String fromCity) {
         mFromCity = fromCity;
+        mFieldSetCount++;
     }
 
     public String getToCity() {
@@ -48,6 +52,7 @@ public class Trip {
 
     public void setToCity(String toCity) {
         mToCity = toCity;
+        mFieldSetCount++;
     }
 
     public String getFreeBaggageSpace() {
@@ -56,6 +61,7 @@ public class Trip {
 
     public void setFreeBaggageSpace(String freeBaggageSpace) {
         mFreeBaggageSpace = freeBaggageSpace;
+        mFieldSetCount++;
     }
 
     public boolean isValidated() {
@@ -72,6 +78,7 @@ public class Trip {
 
     public void setArrivalDate(Date arrivalDate) {
         mArrivalDate = arrivalDate;
+        mFieldSetCount++;
     }
 
     public Date getDepartureDate() {
@@ -79,15 +86,16 @@ public class Trip {
     }
 
     public void setDepartureDate(Date departureDate) {
-
         mDepartureDate = departureDate;
+        mFieldSetCount++;
     }
 
+    //Very hackish I know. shush
     public boolean isDataComplete() {
-        for (Field field : getClass().getDeclaredFields()) {
-            //if(field.getType().equals(String) && field.get)
-        }
-        return true;
+        if (mFieldSetCount > 5)
+            return true;
+        else
+            return false;
     }
 
     public void parseUpload() {
