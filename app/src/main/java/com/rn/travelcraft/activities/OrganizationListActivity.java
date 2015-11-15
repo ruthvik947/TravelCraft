@@ -1,5 +1,7 @@
 package com.rn.travelcraft.activities;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +22,19 @@ import com.rn.travelcraft.parseData.Charity;
 import com.rn.travelcraft.utilities.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class OrganizationListActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
     private static final String TAG = OrganizationListActivity.class.getSimpleName();
 
+    public static final String SELECTED_CHARITY = "Selected Charity";
+    public static final String SELECTED_CHARITY_ID = "Selected Charity ID";
+
     final List<Charity> mCharityData = new ArrayList<>();
+    private HashMap<Charity, String> charityIDs = new HashMap<>();
+
     private RecyclerView mRecyclerView;
     private CharityAdapter mCharityAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -83,6 +91,7 @@ public class OrganizationListActivity extends AppCompatActivity implements Recyc
                         currentCharity.setBackground(charity.getParseFile("background"));
 
                         mCharityData.add(currentCharity);
+                        charityIDs.put(currentCharity, charity.getObjectId());
                     }
                 } else {
                     Log.d(TravelCraftApp.TAG, "CharityQuery error: " + e);
@@ -108,9 +117,17 @@ public class OrganizationListActivity extends AppCompatActivity implements Recyc
         Log.d(TravelCraftApp.TAG, "OrganizationListActivity onDestroy()");
     }
 
-    // TODO: read log statement
+    // TODO: might not work for > 3?
     @Override
     public void recyclerViewListClicked(View v, int position) {
-        Log.d(TAG, "How do I get the item at this position in the RecyclerView");
+        String charitySelected = mCharityData.get(position).getName();
+
+        Intent intent = new Intent(this, ProductListActivity.class);
+        intent.putExtra(SELECTED_CHARITY, charitySelected);
+        intent.putExtra(SELECTED_CHARITY_ID, charityIDs.get(mCharityData.get(position)));
+
+        //TODO: shared element transition
+
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 }
