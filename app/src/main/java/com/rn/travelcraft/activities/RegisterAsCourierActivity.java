@@ -28,6 +28,8 @@ public class RegisterAsCourierActivity extends AppCompatActivity
     private static final String TAG = RegisterAsCourierActivity.class.getSimpleName();
     private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
+    private static final int CONFIRM_REQUEST = 102;
+
     private final String[] fromCities = new String[] {
         "Kampala", "Guatemala", "Baku", "Bangalore", "Nairobi", "Jharkhand"
     };
@@ -159,18 +161,22 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             departureView2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
             mIsDepartureDateSet = false;
-            mDepartureDateText.setText(monthOfYear + "/" + dayOfMonth + "/" + year);
+            String text = monthOfYear + "/" + dayOfMonth + "/" + year;
+            mDepartureDateText.setText(text);
             Date date = new Date();
             date.setDate(dayOfMonth);
             date.setMonth(monthOfYear);
             date.setYear(year - 1900);
             mTrip.setDepartureDate(date);
         } else {
+
             findViewById(R.id.arrivalView1).setVisibility(View.VISIBLE);
             View arrivalView2 = findViewById(R.id.arrivalView2);
             arrivalView2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
-            mArrivalDateText.setText(monthOfYear + "/" + dayOfMonth + "/" + year);
+            String text = monthOfYear + "/" + dayOfMonth + "/" + year;
+            mArrivalDateText.setText(text);
+
             Date date = new Date();
             date.setDate(dayOfMonth);
             date.setMonth(monthOfYear);

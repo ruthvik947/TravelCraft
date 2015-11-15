@@ -132,6 +132,7 @@ public class ProductListActivity extends AppCompatActivity {
                                 p.getDouble("cost"), p.getDouble("weight"),
                                 p.getParseFile("image"));
 
+                        product.setParseId(p.getObjectId());
                         productData.add(product);
                     }
 

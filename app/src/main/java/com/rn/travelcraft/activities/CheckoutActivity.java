@@ -1,10 +1,11 @@
 package com.rn.travelcraft.activities;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,14 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.parse.ParseUser;
 import com.rn.travelcraft.R;
 
-public class HomeActivity extends AppCompatActivity {
-
-    public static final String TAG = HomeActivity.class.getSimpleName();
+public class CheckoutActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -28,15 +26,10 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-        Log.d(TAG, "HomeActivity onCreate()");
-
-        ParseUser currentUser = ParseUser.getCurrentUser();
-
+        setContentView(R.layout.activity_checkout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("TravelCraft");
+        getSupportActionBar().setTitle("Checkout");
 
         mDrawer = (DrawerLayout) findViewById(R.id.parent);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,
@@ -46,20 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
         setupDrawerContent(navigationView);
 
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header);
-        TextView userName = (TextView) headerView.findViewById(R.id.user_name);
-        TextView userEmail = (TextView) headerView.findViewById(R.id.user_email);
-        if (currentUser != null) {
-            userName.setText(currentUser.getString("name"));
-            userEmail.setText(currentUser.getEmail());
-        }
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "HomeActivity onDestroy()");
+        // TODO: implement algorithm
     }
 
     @Override
@@ -99,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    public void setupDrawerContent(NavigationView navigationView) {
+    private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -113,31 +93,29 @@ public class HomeActivity extends AppCompatActivity {
     public void selectDrawerItem(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
-            case R.id.nav_home:
+            case R.id.nav_home: {
+                startActivity(new Intent(this, HomeActivity.class));
                 break;
+            }
             case R.id.nav_profile:
                 break;
             case R.id.nav_about:
                 break;
-            case R.id.nav_cart: {
-                startActivity(new Intent(this, CheckoutActivity.class));
+            case R.id.nav_cart:
                 break;
-            }
             case R.id.nav_logout: {
                 logout();
                 break;
             }
             default:
-                //fragmentClass = FirstFragment.class;
+                break;
         }
 
         menuItem.setChecked(true);
         mDrawer.closeDrawers();
     }
 
-
     private void logout() {
-        Log.d(TAG, "User logged out!");
         // Log the user out
         ParseUser.logOut();
         // Go to the login view
@@ -151,15 +129,5 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onViewListingsClicked(View view) {
-        Intent intent = new Intent(this, OrganizationListActivity.class);
-        startActivity(intent,
-                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-    }
 
-    public void onRegisterClicked(View view) {
-        Intent intent = new Intent(this, RegisterAsCourierActivity.class);
-        startActivity(intent,
-                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-    }
 }
