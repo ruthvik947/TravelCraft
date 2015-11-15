@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    android:padding="@dimen/activity_horizontal_margin"
     android:fitsSystemWindows="true"
+    android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.rn.travelcraft.activities.RegisterAsCourierActivity">
 
     <LinearLayout android:layout_width="match_parent"
@@ -16,9 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:text="@string/register_from_string"
             android:fontFamily="sans-serif-thin"
             android:gravity="center"
+            android:text="@string/register_from_string"
             android:textColor="@android:color/white"
             android:textSize="36sp"/>
 
@@ -26,12 +26,12 @@
             android:id="@+id/from_city_text"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
-            android:textIsSelectable="false"
-            android:textColor="@android:color/holo_orange_light"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-bold"
             android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_light"
+            android:textIsSelectable="false"
             android:textSize="24sp"/>
 
         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -45,9 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="@string/register_to"
             android:fontFamily="sans-serif-thin"
             android:gravity="center"
+            android:text="@string/register_to"
             android:textColor="@android:color/white"
             android:textSize="36sp"/>
 
@@ -55,12 +55,12 @@
             android:id="@+id/to_city_text"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
-            android:textIsSelectable="false"
-            android:textColor="@android:color/holo_orange_light"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-bold"
             android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_light"
+            android:textIsSelectable="false"
             android:textSize="24sp"/>
 
         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -74,9 +74,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="@string/register_space"
             android:fontFamily="sans-serif-thin"
             android:gravity="center"
+            android:text="@string/register_space"
             android:textColor="@android:color/white"
             android:textSize="36sp"/>
 
@@ -84,12 +84,12 @@
             android:id="@+id/free_space_text"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
-            android:textIsSelectable="false"
-            android:textColor="@android:color/holo_orange_light"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-bold"
             android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_light"
+            android:textIsSelectable="false"
             android:textSize="24sp"/>
 
         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -103,31 +103,75 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="@string/register_dates"
             android:fontFamily="sans-serif-thin"
             android:gravity="center"
+            android:text="@string/register_departureDate"
             android:textColor="@android:color/white"
             android:textSize="36sp"/>
 
         <LinearLayout
-            android:id="@+id/date_picker_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/departureDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onDateClicked"
+                android:text="date"
+                android:textColor="@color/colorTextWhite"/>
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:text="@string/register_arrivalDate"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/arrivalDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onDateClicked"
+                android:text="date"
+                android:textColor="@color/colorTextWhite"/>
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"/>
         </LinearLayout>
 
         <Button
             android:id="@+id/next_button"
             android:layout_width="104dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
             android:layout_gravity="center"
-            android:textColor="@color/colorTextWhite"
-            android:fontFamily="sans-serif-bold"
-            android:text="Done"
+            android:layout_marginTop="64dp"
             android:background="@android:color/holo_green_dark"
-            android:onClick="onNextClicked"/>
+            android:fontFamily="sans-serif-bold"
+            android:onClick="onNextClicked"
+            android:text="Done"
+            android:textColor="@color/colorTextWhite"/>
 
     </LinearLayout>
 
