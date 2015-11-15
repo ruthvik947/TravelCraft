@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -28,9 +29,13 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.rn.travelcraft.R;
+import com.rn.travelcraft.application.TravelCraftApp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CheckoutActivity extends AppCompatActivity {
 
@@ -40,6 +45,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private int mCount = 0;
     private int mPrice = 0;
     private JSONArray mCartArray;
+    private List<ParseObject> mProductList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,8 @@ public class CheckoutActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
         setupDrawerContent(navigationView);
 
+        mProductList = new ArrayList<>();
+
         try {
             populateItems();
         } catch (JSONException e) {
@@ -73,6 +81,7 @@ public class CheckoutActivity extends AppCompatActivity {
             q.getInBackground(mCartArray.getString(i), new GetCallback<ParseObject>() {
                 @Override
                 public void done(ParseObject object, ParseException e) {
+                    mProductList.add(object);
                     addProductViews(object);
                 }
             });
@@ -137,12 +146,42 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     public void onCheckoutClicked(View v) {
-
+        try {
+            deliveryEstimate();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void deliveryEstimate() {
-        for (int i = 0; i < mCartArray.length(); i++) {
+    public void deliveryEstimate() throws JSONException, ParseException {
+        for (int i = 0; i < mProductList.size(); i++) {
+            ParseObject product = mProductList.get(i);
+            ParseObject charity = product.getParseObject("parentOrg");
+            charity.fetchIfNeeded();
 
+            final float weight = product.getNumber("weight").floatValue();
+
+            ParseQuery<ParseObject> q = ParseQuery.getQuery("Trips");
+            q.whereGreaterThanOrEqualTo("freeBaggageSpace", weight);
+            q.whereEqualTo("fromCity", charity.getString("location"));
+            q.whereEqualTo("toCity", ParseUser.getCurrentUser().getString("location"));
+            q.orderByDescending("arrivalDate");
+            q.getFirstInBackground(new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject trip, ParseException e) {
+                    if (trip != null) {
+                        Number newFreeBaggageSpace = trip.getNumber("freeBaggageSpace").floatValue() - weight;
+                        trip.put("freeBaggageSpace", newFreeBaggageSpace);
+                        //TODO do whatever else
+                    }
+                    if (e == null)
+                        Log.d(TravelCraftApp.TAG, "Delivery: " + trip.getDate("arrivalDate"));
+                    else
+                        Log.d(TravelCraftApp.TAG, "Exception: " + e);
+                }
+            });
         }
     }
     @Override

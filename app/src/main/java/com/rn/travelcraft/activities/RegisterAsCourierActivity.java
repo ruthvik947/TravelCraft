@@ -119,7 +119,7 @@ public class RegisterAsCourierActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String space = (String) parent.getAdapter().getItem(position);
-                mTrip.setFreeBaggageSpace(space);
+                mTrip.setFreeBaggageSpace(Float.parseFloat(space));
 
             }
         });

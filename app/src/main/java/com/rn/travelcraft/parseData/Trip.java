@@ -10,7 +10,7 @@ public class Trip {
     private ParseUser mTraveller;
     private String mFromCity;
     private String mToCity;
-    private String mFreeBaggageSpace;
+    private float mFreeBaggageSpace;
     private boolean mValidated;
     private Date mArrivalDate;
     private Date mDepartureDate;
@@ -21,7 +21,7 @@ public class Trip {
         mTraveller = null;
         mFromCity = null;
         mToCity = null;
-        mFreeBaggageSpace = null;
+        mFreeBaggageSpace = 0.0f;
         mValidated = false;
         mArrivalDate = null;
         mDepartureDate = null;
@@ -55,11 +55,11 @@ public class Trip {
         mFieldSetCount++;
     }
 
-    public String getFreeBaggageSpace() {
+    public float getFreeBaggageSpace() {
         return mFreeBaggageSpace;
     }
 
-    public void setFreeBaggageSpace(String freeBaggageSpace) {
+    public void setFreeBaggageSpace(float freeBaggageSpace) {
         mFreeBaggageSpace = freeBaggageSpace;
         mFieldSetCount++;
     }
